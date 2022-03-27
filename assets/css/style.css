@@ -1,6 +1,26 @@
 
+.first-frame{
+    height: 80vh;
+    width: 90vw;
+    background-color: rgba(108, 67, 41, 0.93);
+    z-index: 2;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+/*-------------------------------------*/
 .main-content{
     width: 150vw;
+    z-index: -1;
+}
+.main-content > img{
+    width: 150vw;
+    height: 100vh;
+    z-index: -1;
+    position: absolute;
 }
 
 .fighter1 img {
