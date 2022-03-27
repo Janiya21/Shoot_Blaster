@@ -11,11 +11,44 @@
     top: 0;
     bottom: 0;
 }
+
+.start-content> h2{
+    color: white;
+    position: relative;
+    left: 6vw;
+    top: 2vh;
+    background-color: #663212;
+    display: inline;
+}
+
+.start-content{
+    background-color: rgba(85, 41, 14, 0.91);
+    float: left;
+    height: 55vh;
+    width: 30vw;
+    left: 6vw;
+    top: 10vh;
+    position: relative;
+}
+
+.alter-details{
+    float: right;
+    background-color: rgba(85, 41, 14, 0.91);
+    height: 55vh;
+    width: 47vw;
+    right: 112px;
+    top: 10vh;
+    position: relative;
+}
+
+
 /*-------------------------------------*/
+
 .main-content{
     width: 150vw;
     z-index: -1;
 }
+
 .main-content > img{
     width: 150vw;
     height: 100vh;
