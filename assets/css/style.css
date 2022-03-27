@@ -1,3 +1,50 @@
 
+.main-content{
+    width: 150vw;
+}
+
+.fighter1 img {
+    width: 140px;
+    transform: rotate(-90deg);
+}
+
+.menu-buttons{
+    position: relative;
+    top: 30px;
+    left: 30px;
+}
+
+.menu-buttons{
+    z-index: 1;
+    position: absolute
+}
+
+.colX{
+    height: 100vh;
+    width: 14.4vw;
+    float: left;
+    position: fixed;
+}
+
+.colX div {
+    width:15vw;
+    height: 20vh;
+    position: relative;
+    border: 2px solid black;
+}
+
+.row{
+    height: 20vh;
+    border: 1px solid black;
+}
+
+.col{
+    border: 1px solid black;
+}
+
+#myTank{
+    height: 160px;
+    transform: rotate(90deg);
+}
 
 
