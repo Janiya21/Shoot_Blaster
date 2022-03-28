@@ -13,23 +13,22 @@
     </style>
 </head>
 <body>
-
     <section class="first-frame">
         <div class="start-content">
             <h2 class="card-header font-monospace">
                 Shoot Blaster <img src="assets/img/tankLogo.png" style="width: 4vw">
             </h2>
-            <div class="form-group ms-3 me-3">
+            <div class="form-group ms-5 me-3">
                 <label for="txtName">Player Name</label>
                 <input type="email" class="form-control" id="txtName" placeholder="Player Name">
                 <small id="fontName" class="form-text text-muted">Enter a name before start a game</small>
             </div>
-            <div class="form-group ms-3 me-3">
+            <div class="form-group ms-5 me-3">
                 <label for="txtEmail">Email address</label>
                 <input type="email" class="form-control" id="txtEmail" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
-            <div class="form-group ms-3 me-3 mt-3">
+            <div class="form-group ms-5 me-3 mt-3">
                 <select class="form-control">
                     <option>Slow</option>
                     <option>Medium</option>
@@ -38,7 +37,7 @@
 
                 <button type="button" class="btn btn-outline-danger mt-5">Cancel</button>
 
-                <button type="button" class="btn btn-outline-danger ms-4 mt-5">Start Game</button>
+                <button type="button" id="btnStartGame" class="btn btn-outline-warning ms-4 mt-5">Start Game</button>
             </div>
         </div>
         <div class="alter-details">
@@ -159,6 +158,15 @@
     <script src="assets/lib/jQuery/js/jquery-ui.min.js"></script>
     <script src="assets/lib/jQuery/js/jquery-3.6.0.min.js"></script>
     <script>
+
+        $("#btnStartGame").click(function (){
+
+            alert("cickdd");
+
+            $(".first-frame").fadeOut(2000);
+
+            $(".main-content").css("filter","none");
+        });
 
     </script>
 </body>

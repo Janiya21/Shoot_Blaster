@@ -10,6 +10,7 @@
     right: 0;
     top: 0;
     bottom: 0;
+    -webkit-animation:fader 5s;
 }
 
 .start-content> h2{
@@ -48,11 +49,25 @@
     filter: contrast(var(--value, 5)); --value:2;
 }
 
+/*@keyframes fader {
+    from { opacity: 1.0; }
+    to   { opacity: 0.0; }
+}*/
+
+/*
+@-webkit-keyframes fader {
+    from { opacity: 1.0; }
+    to   { opacity: 0.0; }
+}
+*/
+
+
 /*-------------------------------------*/
 
 .main-content{
     width: 150vw;
     z-index: -1;
+    filter: blur(var(--value, 1rem)); --value:3px;
 }
 
 .main-content > img{
