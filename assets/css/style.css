@@ -41,6 +41,12 @@
     position: relative;
 }
 
+.alter-details img{
+    position: relative;
+    top: 5vh;
+    left: 6vw;
+    filter: contrast(var(--value, 5)); --value:2;
+}
 
 /*-------------------------------------*/
 
