@@ -49,6 +49,11 @@
     filter: contrast(var(--value, 5)); --value:2;
 }
 
+.timer{
+    position: relative;
+    z-index: 1;
+}
+
 /*@keyframes fader {
     from { opacity: 1.0; }
     to   { opacity: 0.0; }
@@ -68,6 +73,12 @@
     width: 150vw;
     z-index: -1;
     filter: blur(var(--value, 1rem)); --value:3px;
+}
+
+#countdown{
+    position: absolute !important;
+    padding-left: 40vw !important;
+    padding-top: 30vh !important;
 }
 
 .main-content > img{
