@@ -54,22 +54,55 @@
     z-index: 1;
 }
 
+#countdown{
+    position: absolute !important;
+    padding-left: 40vw !important;
+    padding-top: 30vh !important;
+}
+
 /*@keyframes fader {
     from { opacity: 1.0; }
     to   { opacity: 0.0; }
-}*/
+}
 
-/*
 @-webkit-keyframes fader {
     from { opacity: 1.0; }
     to   { opacity: 0.0; }
-}
-*/
+}*/
 
 
 /*-------------------------------------*/
 
 .main-content{
+    width: 150vw;
+    z-index: -1;
+    filter: blur(var(--value, 1rem)); --value:3px;
+}
+
+.main-content > img{
+    width: 180vw;
+    height: 97.5vh;
+    z-index: -1;
+    position: absolute;
+}
+
+.menu-buttons{
+    position: relative;
+    top: 30px;
+    left: 30px;
+    z-index: 1;
+}
+
+#myTank-Area{
+    border: 2px solid black;
+}
+
+#game{
+    border: 2px solid black;
+}
+
+
+/*.main-content{
     width: 150vw;
     z-index: -1;
     filter: blur(var(--value, 1rem)); --value:3px;
@@ -130,6 +163,6 @@
 #myTank{
     height: 160px;
     transform: rotate(90deg);
-}
+}*/
 
 

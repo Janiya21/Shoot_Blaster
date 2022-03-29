@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tank Shooter</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/lib/jQuery/css/jquery-ui.min.css" rel="stylesheet">
+    <link href="assets/lib/normalizer_css/normalize.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+<body>
+<section class="first-frame">
+    <div class="start-content">
+        <h2 class="card-header font-monospace">
+            Shoot Blaster <img src="assets/img/tankLogo.png" style="width: 4vw">
+        </h2>
+        <div class="form-group ms-5 me-3">
+            <label for="txtName">Player Name</label>
+            <input type="email" class="form-control" id="txtName" placeholder="Player Name">
+            <small id="fontName" class="form-text text-muted">Enter a name before start a game</small>
+        </div>
+        <div class="form-group ms-5 me-3">
+            <label for="txtEmail">Email address</label>
+            <input type="email" class="form-control" id="txtEmail" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group ms-5 me-3 mt-3">
+            <select class="form-control">
+                <option>Slow</option>
+                <option>Medium</option>
+                <option>Fast</option>
+            </select>
+
+            <button type="button" class="btn btn-outline-danger mt-5">Cancel</button>
+
+            <button type="button" id="btnStartGame" class="btn btn-outline-warning ms-4 mt-5">Start Game</button>
+        </div>
+    </div>
+    <div class="alter-details">
+        <img src="assets/img/tankX4.jpg" width=520px" height="320px">
+    </div>
+</section>
+
+<section class="timer">
+    <main id="countdown"></main>
+</section>
+<section class="main-content">
+    <img id="backgr1" src="assets/img/backgr1.jpg">
+    <div class="colX">
+        <div class="row1"></div>
+        <div class="row2">
+            <img id="myTank" src="assets/img/tank4.png">
+        </div>
+        <div class="row3"></div>
+        <div class="row4"></div>
+        <div class="row5"></div>
+    </div>
+    <div class="grid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <div class="fighter1">
+                    <img src="assets/img/tank2.png" alt="tank">
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <div class="menu-buttons">
+        <button id="btnStartAction" class="btn-success top-50">Start Me</button>
+    </div>
+</section>
+
+<script src="assets/lib/jQuery/js/jquery-ui.min.js"></script>
+<script src="assets/lib/jQuery/js/jquery-3.6.0.min.js"></script>
+<script src="assets/lib/jQuery/jquery.countdown360.min.js"></script>
+<script>
+
+    var countdown = $("#countdown").countdown360({
+        radius      : 110,
+        seconds     : 5,
+        fontColor   :'#FFFFFF',
+        autostart   :false,
+        onComplete  :function () {
+            $("#countdown").css("display","none");
+            $(".main-content").css("filter","none");
+        }
+    });
+
+    $("#btnStartGame").click(function (){
+
+        alert("Game will Start!! Press OK");
+
+        $(".first-frame").fadeOut(2000);
+
+        countdown.start();
+    });
+
+</script>
+</body>
+</html>

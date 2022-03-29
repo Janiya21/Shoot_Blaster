@@ -48,7 +48,19 @@
     <section class="timer">
         <main id="countdown"></main>
     </section>
+
     <section class="main-content">
+        <img id="backgr1" src="assets/img/backgr1.jpg">
+        <div class="menu-buttons">
+            <button id="btnStartAction" class="btn-success top-50">Start Me</button>
+        </div>
+
+        <canvas id="myTank-Area">
+            <img src="assets/img/tank2.png" alt="tank">
+        </canvas>
+    </section>
+
+    <!--<section class="main-content">
         <img id="backgr1" src="assets/img/backgr1.jpg">
         <div class="colX">
             <div class="row1"></div>
@@ -156,9 +168,10 @@
         <div class="menu-buttons">
             <button id="btnStartAction" class="btn-success top-50">Start Me</button>
         </div>
-    </section>
+    </section>-->
 
-    <script src="assets/lib/jQuery/js/jquery-ui.min.js"></script>
+<!--    <script src="assets/js/main.js"></script>-->
+<!--    <script src="assets/lib/jQuery/js/jquery-ui.min.js"></script>-->
     <script src="assets/lib/jQuery/js/jquery-3.6.0.min.js"></script>
     <script src="assets/lib/jQuery/jquery.countdown360.min.js"></script>
     <script>
@@ -183,7 +196,31 @@
             countdown.start();
         });
 
+        /*===================================================*/
 
+        const canvas = document.getElementById("myTank-Area");
+        console.log(canvas)
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        var c = canvas.getContext('2d');
+
+        var x = window.innerWidth;
+
+        function animate(){
+            requestAnimationFrame(animate);
+
+            c.clearRect(0,0, innerWidth, innerHeight);
+
+            c.beginPath();
+            c.arc(x--,300,40, Math.PI * 2, false);
+            c.strokeStyle = "blue";
+            c.stroke();
+
+        }
+
+        animate();
 
 
     </script>
