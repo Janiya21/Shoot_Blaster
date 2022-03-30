@@ -57,7 +57,7 @@
 #countdown{
     position: absolute !important;
     padding-left: 40vw !important;
-    padding-top: 30vh !important;
+    top: 30vh !important;
 }
 
 /*@keyframes fader {
@@ -94,11 +94,10 @@
 }
 
 #myTank-Area{
-    border: 2px solid black;
-}
-
-#game{
-    border: 2px solid black;
+    width: 180vw;
+    height: 95vh;
+    top: 0;
+    position: relative;
 }
 
 #myTank{

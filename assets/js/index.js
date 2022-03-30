@@ -22,4 +22,6 @@ function setCommonStyle(){
     ctx.lineWidth=5;
 }
 
+console.log("Fuckkk")
+
 setInterval(gameLoop, 1000 / 60);

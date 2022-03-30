@@ -13,6 +13,7 @@
     </style>
 </head>
 <body>
+
     <section class="first-frame">
         <div class="start-content">
             <h2 class="card-header font-monospace">
@@ -56,7 +57,7 @@
         </div>
 
         <img id="myTank" src="assets/img/tank2.png" alt="tank" style="display: none;">
-        <canvas id="myTank-Area" style="width: 180vw; height: 100vh"></canvas>
+        <canvas id="myTank-Area"></canvas>
     </section>
 
     <!--<section class="main-content">
@@ -171,8 +172,10 @@
 
     <script src="assets/lib/jQuery/js/jquery-3.6.0.min.js"></script>
     <script src="assets/lib/jQuery/jquery.countdown360.min.js"></script>
-    <script src="assets/js/index.js"></script>
+
     <script>
+
+        /*===================================================*/
 
         var countdown = $("#countdown").countdown360({
             radius      : 110,
@@ -197,8 +200,24 @@
 
         /*===================================================*/
 
+        class Player{
+            constructor(x,y) {
+                this.x=x;
+                this.y=y;
+                this.width=50;
+                this.height=50;
+                this.speed=4;
+            }
 
-        import Player from "./Player.js";
+            draw(ctx){
+                ctx.strokeStyle="yellow";
+                ctx.fillStyle="black";
+                ctx.strokeRect(this.x, this.y, this.width, this.height);
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+        }
+
+        /*===================================================*/
 
         const canvas = document.getElementById("myTank-Area");
         const ctx = canvas.getContext("2d");
@@ -210,16 +229,16 @@
 
         function gameLoop() {
             setCommonStyle();
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "transparent";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             player.draw(ctx);
         }
 
         function setCommonStyle(){
             ctx.shadowColor= "#d53";
-            ctx.shadowBlur=20;
             ctx.lineJoin="bevel";
-            ctx.lineWidth=5;
+            // ctx.shadowBlur=20;
+            // ctx.lineWidth=2;
         }
 
         setInterval(gameLoop, 1000 / 60);
