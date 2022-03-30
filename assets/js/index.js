@@ -1,6 +1,6 @@
 import Player from "./Player.js";
 
-const canvas = document.getElementById("game");
+const canvas = document.getElementById("myTank-Area");
 const ctx = canvas.getContext("2d");
 
 canvas.width = 550;
