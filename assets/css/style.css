@@ -74,14 +74,15 @@
 /*-------------------------------------*/
 
 .main-content{
-    width: 150vw;
+    overflow: hidden;
+    width: 100vw;
     z-index: -1;
     /*filter: blur(var(--value, 1rem)); --value:3px;*/
 }
 
 .main-content > img{
-    width: 180vw;
-    height: 97.5vh;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
     position: absolute;
 }
@@ -94,16 +95,12 @@
 }
 
 #myTank-Area{
-    width: 180vw;
+    width: 100vw;
     height: 95vh;
     top: 0;
     position: relative;
 }
 
-#myTank{
-    width: 140px;
-    transform: rotate(-90deg);
-}
 
 /*.main-content{
     width: 150vw;

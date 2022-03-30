@@ -209,41 +209,64 @@
                 this.height=50;
                 this.speed=4;
                 this.pat=pat;
+
+                document.addEventListener("keydown", this.keydown);
+                document.addEventListener("keyup", this.keyup);
             }
 
             draw(ctx){
-                ctx.drawImage(img,canvas.width/2.2,canvas.height/1.3,40,90);
+                this.move();
+                ctx.drawImage(img,this.x,this.y,40,90);
+                /*ctx.strokeStyle="yellow";
+                ctx.fillStyle="black";
+                ctx.strokeRect(this.x, this.y, this.width, this.height);
+                ctx.fillRect(this.x, this.y, this.width, this.height);*/
             }
 
-            keydown =(e)=>{
-                if(e.code === "ArrowUP"){
-                    this.upPressed = true;
+            move() {
+                if (this.downPressed) {
+                    this.y += this.speed;
                 }
-                if(e.code === "ArrowDown"){
-                    this.downPressed = true;
+                if (this.upPressed) {
+                    this.y -= this.speed;
                 }
-                if(e.code === "ArrowLeft"){
-                    this.leftPressed = true;
+                if (this.leftPressed) {
+                    this.x -= this.speed;
                 }
-                if(e.code === "ArrowRight"){
-                    this.rightPressed = true;
+                if (this.rightPressed) {
+                    this.x += this.speed;
                 }
             }
 
-            keyup =(e)=>{
-                if(e.code === "ArrowUP"){
+            keydown = (e) => {
+                if (e.code === "ArrowUp") {
                     this.upPressed = true;
                 }
-                if(e.code === "ArrowDown"){
+                if (e.code === "ArrowDown") {
                     this.downPressed = true;
                 }
-                if(e.code === "ArrowLeft"){
+                if (e.code === "ArrowLeft") {
                     this.leftPressed = true;
                 }
-                if(e.code === "ArrowRight"){
+                if (e.code === "ArrowRight") {
                     this.rightPressed = true;
                 }
-            }
+            };
+
+            keyup = (e) => {
+                if (e.code === "ArrowUp") {
+                    this.upPressed = false;
+                }
+                if (e.code === "ArrowDown") {
+                    this.downPressed = false;
+                }
+                if (e.code === "ArrowLeft") {
+                    this.leftPressed = false;
+                }
+                if (e.code === "ArrowRight") {
+                    this.rightPressed = false;
+                }
+            };
         }
 
         /*===================================================*/
@@ -255,19 +278,20 @@
         canvas.width = 550;
         canvas.height = 600;
 
-        const player = new Player(canvas.width/2.2, canvas.height/1.3);
+        const player = new Player(canvas.width/2.2, canvas.height/1.3,img);
 
         function gameLoop() {
-            setCommonStyle();
+            /*ctx.fillStyle = "black";
             ctx.fillStyle = "transparent";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);*/
+            /*ctx.fillRect(0, 0, canvas.width, canvas.height);*/
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             player.draw(ctx);
         }
 
         function setCommonStyle(){
             ctx.shadowColor= "#d53";
             ctx.lineJoin="bevel";
-            // ctx.shadowBlur=20;
-            // ctx.lineWidth=2;
         }
 
         setInterval(gameLoop, 1000 / 60);
