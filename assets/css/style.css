@@ -101,6 +101,10 @@
     border: 2px solid black;
 }
 
+#myTank{
+    width: 140px;
+    transform: rotate(-90deg);
+}
 
 /*.main-content{
     width: 150vw;
