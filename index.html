@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <section class="first-frame">
+    <!--<section class="first-frame">
         <div class="start-content">
             <h2 class="card-header font-monospace">
                 Shoot Blaster <img src="assets/img/tankLogo.png" style="width: 4vw">
@@ -44,7 +44,7 @@
         <div class="alter-details">
            <img src="assets/img/tankX4.jpg" width=520px" height="320px">
         </div>
-    </section>
+    </section>-->
 
     <section class="timer">
         <main id="countdown"></main>
@@ -201,25 +201,27 @@
         /*===================================================*/
 
         class Player{
-            constructor(x,y) {
+
+            constructor(x,y,pat) {
                 this.x=x;
                 this.y=y;
                 this.width=50;
                 this.height=50;
                 this.speed=4;
+                this.pat=pat;
             }
 
             draw(ctx){
-                ctx.strokeStyle="yellow";
-                ctx.fillStyle="black";
-                ctx.strokeRect(this.x, this.y, this.width, this.height);
-                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.drawImage(img,canvas.width/2.2,canvas.height/1.3,40,90);
             }
+
+            keydown
         }
 
         /*===================================================*/
 
         const canvas = document.getElementById("myTank-Area");
+        const img = document.getElementById("myTank");
         const ctx = canvas.getContext("2d");
 
         canvas.width = 550;
@@ -230,7 +232,6 @@
         function gameLoop() {
             setCommonStyle();
             ctx.fillStyle = "transparent";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
             player.draw(ctx);
         }
 
