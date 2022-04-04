@@ -224,17 +224,53 @@
             }
 
             move() {
-                if (this.downPressed) {
-                    this.y += this.speed;
+                console.log(" inner height " + window.innerHeight)
+                if((this.y > 0 && this.y < 521)){
+                    if (this.downPressed) {
+                        this.y += this.speed;
+                    }
+                    if (this.upPressed) {
+                        this.y -= this.speed;
+                    }
+                }else{
+                    if(this.y < 0){
+                        this.y = 0;
+                    }
+                    if(this.y > 521){
+                        this.y = 521;
+                    }
+
+                    if (this.downPressed) {
+                        this.y += this.speed;
+                    }
+                    if (this.upPressed) {
+                        this.y -= this.speed;
+                    }
                 }
-                if (this.upPressed) {
-                    this.y -= this.speed;
-                }
-                if (this.leftPressed) {
-                    this.x -= this.speed;
-                }
-                if (this.rightPressed) {
-                    this.x += this.speed;
+
+                console.log(" y: " + this.y);
+                console.log(" x: " + this.x);
+
+                if((this.x > 0 && this.x < 450)){
+                    if (this.leftPressed) {
+                        this.x -= this.speed;
+                    }
+                    if (this.rightPressed) {
+                        this.x += this.speed;
+                    }
+                }else{
+                   if(this.x < 0){
+                       this.x=0;
+                   }
+                   if(this.x > 450){
+                       this.x=450;
+                   }
+                    if (this.leftPressed) {
+                        this.x -= this.speed;
+                    }
+                    if (this.rightPressed) {
+                        this.x += this.speed;
+                    }
                 }
             }
 
