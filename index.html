@@ -437,12 +437,17 @@
         const bulletController = new BulletController(canvas);
         const player = new Player(10, window.innerHeight/3,img,bulletController);
 
-        let x=430;
+        let x=0;
+        let distanceXArray = [400,550, 650,420,480];
+        let distanceYArray = [200,50,270];
         function gameLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             player.draw(ctx);
+
             bulletController.draw(ctx);
-            new Enemy(x--,100,"yellow",10).draw(ctx);
+            new Enemy(distanceXArray[0]--,distanceYArray[0],"yellow",10).draw(ctx);
+            new Enemy(distanceXArray[1]--,distanceYArray[1],"red",10).draw(ctx);
+            new Enemy(distanceXArray[2]--,distanceYArray[2],"blue",10).draw(ctx);
             /*new Enemy(300,200,"yellow",10).draw(ctx);
             new Enemy(400,230,"yellow",10).draw(ctx);
             new Enemy(480,300,"yellow",10).draw(ctx);*/
