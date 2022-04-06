@@ -57,6 +57,12 @@
         </div>
 
         <img id="myTank" src="assets/img/tank2.png" alt="tank" style="display: none;">
+
+        <img id="opTank1" src="assets/img/tank4.png" alt="tank" style="display: none;">
+        <img id="opTank2" src="assets/img/tank4.png" alt="tank" style="display: none;">
+        <img id="opTank3" src="assets/img/tank5.png" alt="tank" style="display: none;">
+        <img id="opTank4" src="assets/img/tank5.png" alt="tank" style="display: none;">
+
         <canvas id="myTank-Area"></canvas>
     </section>
 
@@ -202,14 +208,14 @@
 
         class Player{
 
-            constructor(x,y,pat, bulletController) {
+            constructor(x,y, bulletController,img) {
                 this.x=x;
                 this.y=y;
                 this.width=50;
                 this.height=50;
                 this.speed=4;
                 this.bulletController = bulletController;
-                this.pat=pat;
+                this.img=img;
 
                 document.addEventListener("keydown", this.keydown);
                 document.addEventListener("keyup", this.keyup);
@@ -217,12 +223,11 @@
 
             draw(ctx){
                 this.move();
-                ctx.drawImage(img,this.x,this.y,40,90);
+                ctx.drawImage(this.img,this.x,this.y,40,90);
                 /*ctx.strokeStyle="yellow";
                 ctx.fillStyle="black";
                 ctx.strokeRect(this.x, this.y, this.width, this.height);
                 ctx.fillRect(this.x, this.y, this.width, this.height);*/
-
                 this.shoot();
             }
 
@@ -388,13 +393,14 @@
 
         class Enemy{
 
-            constructor(x,y,color,health){
+            constructor(x,y,color,health,img){
                 this.x=x;
                 this.y=y;
                 this.color=color;
                 this.health=health;
                 this.width=50;
                 this.height=50;
+                this.img=img;
             }
 
             draw(ctx){
@@ -404,16 +410,17 @@
                 }else{
                     ctx.strokeStyle = this.color;
                 }
-                ctx.fillRect(this.x,this.y,this.width, this.height);
-                ctx.strokeRect(this.x,this.y,this.width, this.height);
+                /*ctx.fillRect(this.x,this.y,this.width, this.height);
+                ctx.strokeRect(this.x,this.y,this.width, this.height);*/
+                ctx.drawImage(this.img,this.x,this.y,40,90);
 
-                ctx.fillStyle = "black";
-                ctx.font = "25px Arial";
-                ctx.fillText(
+                /*ctx.fillStyle = "black";
+                ctx.font = "25px Arial";*/
+                /*ctx.fillText(
                     this.health,
                     this.x + this.width/3.5,
                     this.y + this.height/1.5
-                );
+                );*/
 
             }
         }
@@ -428,30 +435,33 @@
         /*==================== Main Controller ========================*/
 
         const canvas = document.getElementById("myTank-Area");
-        const img = document.getElementById("myTank");
+        const imgMyTank = document.getElementById("myTank");
         const ctx = canvas.getContext("2d");
+        const opTank1 = document.getElementById("opTank1");
+        const opTank2 = document.getElementById("opTank2");
+        const opTank3 = document.getElementById("opTank3");
+        const opTank4 = document.getElementById("opTank4");
 
         canvas.width = 550;
         canvas.height = 600;
 
         const bulletController = new BulletController(canvas);
-        const player = new Player(10, window.innerHeight/3,img,bulletController);
+        const player = new Player(10, window.innerHeight/3,bulletController,imgMyTank);
 
         let x=0;
         let distanceXArray = [400,550, 650,420,480];
-        let distanceYArray = [200,50,270];
+        let distanceYArray = [200,50,270,330];
         function gameLoop() {
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             player.draw(ctx);
 
             bulletController.draw(ctx);
-            new Enemy(distanceXArray[0]--,distanceYArray[0],"yellow",10).draw(ctx);
-            new Enemy(distanceXArray[1]--,distanceYArray[1],"red",10).draw(ctx);
-            new Enemy(distanceXArray[2]--,distanceYArray[2],"blue",10).draw(ctx);
-            /*new Enemy(300,200,"yellow",10).draw(ctx);
-            new Enemy(400,230,"yellow",10).draw(ctx);
-            new Enemy(480,300,"yellow",10).draw(ctx);*/
 
+            new Enemy(distanceXArray[0]--,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+            new Enemy(distanceXArray[1]--,distanceYArray[1],"red",10,opTank2).draw(ctx);
+            new Enemy(distanceXArray[2]--,distanceYArray[2],"blue",10,opTank3).draw(ctx);
+            new Enemy(distanceXArray[3]--,distanceYArray[3],"blue",10,opTank4).draw(ctx);
         }
 
         function setCommonStyle(){
