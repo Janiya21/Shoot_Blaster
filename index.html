@@ -458,7 +458,10 @@
 
             bulletController.draw(ctx);
 
-
+            new Enemy(distanceXArray[0]-=0.4,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+            new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
+            new Enemy(distanceXArray[2]-=0.9,distanceYArray[2],"blue",10,opTank3).draw(ctx);
+            new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);
         }
 
         function setCommonStyle(){
