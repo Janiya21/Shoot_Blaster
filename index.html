@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <!--<section class="first-frame">
+    <section class="first-frame">
         <div class="start-content">
             <h2 class="card-header font-monospace">
                 Shoot Blaster <img src="assets/img/tankLogo.png" style="width: 4vw">
@@ -44,7 +44,7 @@
         <div class="alter-details">
            <img src="assets/img/tankX4.jpg" width=520px" height="320px">
         </div>
-    </section>-->
+    </section>
 
     <section class="timer">
         <main id="countdown"></main>
@@ -201,6 +201,8 @@
             $(".first-frame").fadeOut(2000);
 
             countdown.start();
+
+            setTimeout(startGame,0);
 
         });
 
@@ -412,6 +414,7 @@
                 }
                 /*ctx.fillRect(this.x,this.y,this.width, this.height);
                 ctx.strokeRect(this.x,this.y,this.width, this.height);*/
+
                 ctx.drawImage(this.img,this.x,this.y,40,90);
 
                 /*ctx.fillStyle = "black";
@@ -434,42 +437,44 @@
 
         /*==================== Main Controller ========================*/
 
-        const canvas = document.getElementById("myTank-Area");
-        const imgMyTank = document.getElementById("myTank");
-        const ctx = canvas.getContext("2d");
-        const opTank1 = document.getElementById("opTank1");
-        const opTank2 = document.getElementById("opTank2");
-        const opTank3 = document.getElementById("opTank3");
-        const opTank4 = document.getElementById("opTank4");
+        function startGame(){
+            const canvas = document.getElementById("myTank-Area");
+            const imgMyTank = document.getElementById("myTank");
+            const ctx = canvas.getContext("2d");
+            const opTank1 = document.getElementById("opTank1");
+            const opTank2 = document.getElementById("opTank2");
+            const opTank3 = document.getElementById("opTank3");
+            const opTank4 = document.getElementById("opTank4");
 
-        canvas.width = 550;
-        canvas.height = 600;
+            canvas.width = 550;
+            canvas.height = 600;
 
-        const bulletController = new BulletController(canvas);
-        const player = new Player(10, window.innerHeight/3,bulletController,imgMyTank);
+            const bulletController = new BulletController(canvas);
+            const player = new Player(10, window.innerHeight/3,bulletController,imgMyTank);
 
-        let x=0;
-        let distanceXArray = [400,550, 650,420,480];
-        let distanceYArray = [200,50,270,330];
-        function gameLoop() {
+            let x=0;
+            let distanceXArray = [400,550, 650,420,480];
+            let distanceYArray = [200,50,270,330];
+            function gameLoop() {
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            player.draw(ctx);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                player.draw(ctx);
 
-            bulletController.draw(ctx);
+                bulletController.draw(ctx);
 
-            new Enemy(distanceXArray[0]-=0.4,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
-            new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
-            new Enemy(distanceXArray[2]-=0.9,distanceYArray[2],"blue",10,opTank3).draw(ctx);
-            new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);
+                new Enemy(distanceXArray[0]-=0.4,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+                new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
+                new Enemy(distanceXArray[2]-=0.9,distanceYArray[2],"blue",10,opTank3).draw(ctx);
+                new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);
+            }
+
+            function setCommonStyle(){
+                ctx.shadowColor= "#d53";
+                ctx.lineJoin="bevel";
+            }
+
+            setInterval(gameLoop, 1000 / 60);
         }
-
-        function setCommonStyle(){
-            ctx.shadowColor= "#d53";
-            ctx.lineJoin="bevel";
-        }
-
-        setInterval(gameLoop, 1000 / 60);
 
     </script>
 </body>
