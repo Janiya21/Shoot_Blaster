@@ -53,7 +53,7 @@
     <section class="main-content">
         <img id="backgr1" src="assets/img/backgr1.jpg">
         <div class="menu-buttons">
-            <button id="btnStartAction" class="btn-success top-50">Start Me</button>
+            <button id="btnPauseAction" style="display: none" class="btn-success top-50">Pause Game</button>
         </div>
 
         <img id="myTank" src="assets/img/tank2.png" alt="tank" style="display: none;">
@@ -62,7 +62,6 @@
         <img id="opTank2" src="assets/img/tank4.png" alt="tank" style="display: none;">
         <img id="opTank3" src="assets/img/tank5.png" alt="tank" style="display: none;">
         <img id="opTank4" src="assets/img/tank5.png" alt="tank" style="display: none;">
-
         <canvas id="myTank-Area"></canvas>
     </section>
 
@@ -191,8 +190,11 @@
             onComplete  :function () {
                 $("#countdown").css("display","none");
                 $(".main-content").css("filter","none");
+                $("#btnPauseAction").css("display","inherit");
             }
         });
+
+        let count;
 
         $("#btnStartGame").click(function (){
 
@@ -202,14 +204,13 @@
 
             countdown.start();
 
-            setTimeout(startGame,0);
+            setTimeout(startGame,5000);
 
         });
 
         /*================= Player Controller =======================*/
 
         class Player{
-
             constructor(x,y, bulletController,img) {
                 this.x=x;
                 this.y=y;
@@ -337,6 +338,7 @@
 
         /*==================== Bullet JS ==============================*/
 
+
         class Bullet{
             constructor(x,y,speed,damage) {
                 this.x=x;
@@ -352,6 +354,7 @@
             draw(ctx){
                 ctx.fillStyle = this.color;
                 this.x += this.speed;
+                console.log(this.x + "  faqqq")
                 ctx.fillRect(this.x, this.y, this.width, this.height);
             }
         }
@@ -372,7 +375,6 @@
                     this.bullets.push(new Bullet(x,y,speed,damage));
                     this.timeTillNextBullet = delay;
                 }
-
                 this.timeTillNextBullet--;
             }
 
@@ -416,6 +418,7 @@
                 ctx.strokeRect(this.x,this.y,this.width, this.height);*/
 
                 ctx.drawImage(this.img,this.x,this.y,40,90);
+                console.log(this.x + " seeeeeeeeeexx");
 
                 /*ctx.fillStyle = "black";
                 ctx.font = "25px Arial";*/
@@ -473,8 +476,12 @@
                 ctx.lineJoin="bevel";
             }
 
-            setInterval(gameLoop, 1000 / 60);
+            count = setInterval(gameLoop, 1000 / 60);
         }
+
+        $("#btnPauseAction").click(function (){
+            clearInterval(count);
+        });
 
     </script>
 </body>
