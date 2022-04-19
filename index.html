@@ -55,6 +55,9 @@
         <div class="menu-buttons">
             <button id="btnPauseAction" style="display: none" class="btn-success top-50">Pause Game</button>
         </div>
+        <div class="menu-buttons">
+            <button id="btnResumeAction" style="display: none; position: absolute" class="btn-warning mt-2">Resume Game</button>
+        </div>
 
         <img id="myTank" src="assets/img/tank2.png" alt="tank" style="display: none;">
 
@@ -191,6 +194,7 @@
                 $("#countdown").css("display","none");
                 $(".main-content").css("filter","none");
                 $("#btnPauseAction").css("display","inherit");
+                $("#btnResumeAction").css("display","inherit");
             }
         });
 
@@ -477,11 +481,17 @@
             }
 
             count = setInterval(gameLoop, 1000 / 60);
+
+            $("#btnPauseAction").click(function (){
+                clearInterval(count);
+            });
+
+            $("#btnResumeAction").click(function (){
+                clearInterval(count);
+                count = setInterval(gameLoop, 1000 / 60);
+            });
         }
 
-        $("#btnPauseAction").click(function (){
-            clearInterval(count);
-        });
 
     </script>
 </body>
