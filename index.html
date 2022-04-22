@@ -241,7 +241,7 @@
             shoot(){
                 if(this.shootPressed){
                     console.log("Shoot....");
-                    let speed = 5;
+                    let speed = 2;
                     let delay = 7;
                     let damage = 1;
                     let bulletY = this.y + this.height - 10;
@@ -386,13 +386,15 @@
             }
 
             draw(ctx){
+                let posX;
                 this.bullets.forEach((bullet) => {
                     if(this.isBulletOffScreen(bullet)){
                         const index = this.bullets.indexOf(bullet);
                         this.bullets.splice(index,1);
                     }
-                    return bullet.draw(ctx);
+                    posX = bullet.draw(ctx);
                 });
+                return posX;
             }
         }
 
@@ -467,14 +469,19 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 player.draw(ctx);
 
-                let bulletX = bulletController.draw(ctx);
-                console.log(bulletX + " bullet X")
+                let posX = bulletController.draw(ctx);
 
-                let x1 = new Enemy(distanceXArray[0]-=0.4,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+                let x1 = new Enemy(distanceXArray[0]-=2,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
 
-                new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
+                console.log(posX + "  ?  " + x1);
+
+                if(x1 === posX){
+                    console.log("fuckd");
+                }
+
+                /*new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
                 new Enemy(distanceXArray[2]-=0.9,distanceYArray[2],"blue",10,opTank3).draw(ctx);
-                new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);
+                new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);*/
 
 
             }
