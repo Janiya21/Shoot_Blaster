@@ -342,7 +342,6 @@
 
         /*==================== Bullet JS ==============================*/
 
-
         class Bullet{
             constructor(x,y,speed,damage) {
                 this.x=x;
@@ -358,8 +357,8 @@
             draw(ctx){
                 ctx.fillStyle = this.color;
                 this.x += this.speed;
-                console.log(this.x + "  faqqq")
                 ctx.fillRect(this.x, this.y, this.width, this.height);
+                return this.x;
             }
         }
 
@@ -392,7 +391,7 @@
                         const index = this.bullets.indexOf(bullet);
                         this.bullets.splice(index,1);
                     }
-                    bullet.draw(ctx);
+                    return bullet.draw(ctx);
                 });
             }
         }
@@ -422,7 +421,6 @@
                 ctx.strokeRect(this.x,this.y,this.width, this.height);*/
 
                 ctx.drawImage(this.img,this.x,this.y,40,90);
-                console.log(this.x + " seeeeeeeeeexx");
 
                 /*ctx.fillStyle = "black";
                 ctx.font = "25px Arial";*/
@@ -431,6 +429,8 @@
                     this.x + this.width/3.5,
                     this.y + this.height/1.5
                 );*/
+
+                return this.x;
 
             }
         }
@@ -467,12 +467,16 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 player.draw(ctx);
 
-                bulletController.draw(ctx);
+                let bulletX = bulletController.draw(ctx);
+                console.log(bulletX + " bullet X")
 
-                new Enemy(distanceXArray[0]-=0.4,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+                let x1 = new Enemy(distanceXArray[0]-=0.4,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+
                 new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
                 new Enemy(distanceXArray[2]-=0.9,distanceYArray[2],"blue",10,opTank3).draw(ctx);
                 new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);
+
+
             }
 
             function setCommonStyle(){
