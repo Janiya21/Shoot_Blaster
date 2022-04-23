@@ -483,14 +483,13 @@
                 let bX = bulletController.draw(ctx);
 
                 if(eOn===true){
-                    let eObj1 = new Enemy(distanceXArray[0]-=2,distanceYArray[0],"yellow",10,opTank1);
+                    let eObj1 = new Enemy(distanceXArray[0]-=1,distanceYArray[0],"yellow",10,opTank1);
                     let e1 = eObj1.draw(ctx);
 
                     console.log(bY + "  ?  " + e1[1]);
                     console.log(bX + "  /  " + e1[0]);
 
                     if(bY >= e1[1]-15 && bY <= e1[1]+15){
-                        console.log("yooooooooooooooooo");
                         if( bX >= e1[0]-20 && bX <= e1[0]+20){
                             console.log("fucked....");
                             eOn = false;
