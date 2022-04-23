@@ -470,6 +470,7 @@
             let distanceYArray = [200,50,270,330];
 
             let eOn=true;
+            let eTw=true;
 
             function gameLoop() {
 
@@ -491,6 +492,17 @@
                         if( bX >= e1[0]-30 && bX <= e1[0]+30){
                             console.log("fucked....");
                             eOn = false;
+                        }
+                    }
+                }
+
+                if(eTw===true){
+                    let eObj2 = new Enemy(distanceXArray[1]-=2,distanceYArray[2],"yellow",20,opTank2);
+                    let e2 = eObj2.draw(ctx);
+
+                    if(bY >= e2[1]-30 && bY <= e2[1]+30){
+                        if( bX >= e2[0]-30 && bX <= e2[0]+30){
+                            eTw = false;
                         }
                     }
                 }
