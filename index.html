@@ -467,11 +467,12 @@
 
             let x=0;
             let distanceXArray = [400,550, 650,420,480];
-            let distanceYArray = [200,50,270,330];
+            let distanceYArray = [200,50,270,330,400];
 
             let eOn=true;
             let eTw=true;
             let eTh=true;
+            let eFo=true;
 
             function gameLoop() {
 
@@ -488,9 +489,9 @@
                     console.log(bY + "  ?  " + e1[1]);
                     console.log(bX + "  /  " + e1[0]);
 
-                    if(bY >= e1[1]-30 && bY <= e1[1]+30){
+                    if(bY >= e1[1]-15 && bY <= e1[1]+15){
                         console.log("yooooooooooooooooo");
-                        if( bX >= e1[0]-30 && bX <= e1[0]+30){
+                        if( bX >= e1[0]-20 && bX <= e1[0]+20){
                             console.log("fucked....");
                             eOn = false;
                         }
@@ -501,8 +502,8 @@
                     let eObj2 = new Enemy(distanceXArray[1]-=2,distanceYArray[2],"yellow",20,opTank2);
                     let e2 = eObj2.draw(ctx);
 
-                    if(bY >= e2[1]-30 && bY <= e2[1]+30){
-                        if( bX >= e2[0]-30 && bX <= e2[0]+30){
+                    if(bY >= e2[1]-15 && bY <= e2[1]+15){
+                        if( bX >= e2[0]-20 && bX <= e2[0]+20){
                             eTw = false;
                         }
                     }
@@ -512,9 +513,20 @@
                     let eObj3 = new Enemy(distanceXArray[2]-=1,distanceYArray[3],"yellow",20,opTank3);
                     let e3 = eObj3.draw(ctx);
 
-                    if(bY >= e3[1]-30 && bY <= e3[1]+30){
-                        if( bX >= e3[0]-30 && bX <= e3[0]+30){
+                    if(bY >= e3[1]-15 && bY <= e3[1]+15){
+                        if( bX >= e3[0]-20 && bX <= e3[0]+20){
                             eTh = false;
+                        }
+                    }
+                }
+
+                if(eFo===true){
+                    let eObj4 = new Enemy(distanceXArray[3]-=1,distanceYArray[4],"yellow",20,opTank4);
+                    let e4 = eObj4.draw(ctx);
+
+                    if(bY >= e4[1]-15 && bY <= e4[1]+15){
+                        if( bX >= e4[0]-20 && bX <= e4[0]+20){
+                            eFo = false;
                         }
                     }
                 }
