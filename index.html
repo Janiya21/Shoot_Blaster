@@ -435,6 +435,10 @@
 
                 return [this.x, this.y];
             }
+
+            remove(ctx){
+                ctx.clearRect(this.x,this.y,this.width,this.height);
+            }
         }
 
         /*============== Enemy Controller ===============================*/
@@ -464,6 +468,9 @@
             let x=0;
             let distanceXArray = [400,550, 650,420,480];
             let distanceYArray = [200,50,270,330];
+
+            let eOn=true;
+
             function gameLoop() {
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -472,22 +479,25 @@
 
                 let bX = bulletController.draw(ctx);
 
-                let e1 = new Enemy(distanceXArray[0]-=2,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
+                if(eOn===true){
+                    let eObj1 = new Enemy(distanceXArray[0]-=2,distanceYArray[0],"yellow",10,opTank1);
+                    let e1 = eObj1.draw(ctx);
 
-                console.log(bY + "  ?  " + e1[1]);
+                    console.log(bY + "  ?  " + e1[1]);
+                    console.log(bX + "  /  " + e1[0]);
 
-                if(bX >= e1[0] && bX <= e1[0]+10){
-
-                }
-
-                if(bY >= e1[1] && bY <= e1[1]+10){
-                    console.log("fucked......")
+                    if(bY >= e1[1]-30 && bY <= e1[1]+30){
+                        console.log("yooooooooooooooooo");
+                        if( bX >= e1[0]-30 && bX <= e1[0]+30){
+                            console.log("fucked....");
+                            eOn = false;
+                        }
+                    }
                 }
 
                 /*new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
                 new Enemy(distanceXArray[2]-=0.9,distanceYArray[2],"blue",10,opTank3).draw(ctx);
                 new Enemy(distanceXArray[3]-=0.6,distanceYArray[3],"blue",10,opTank4).draw(ctx);*/
-
 
             }
 
