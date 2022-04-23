@@ -236,6 +236,7 @@
                 ctx.strokeRect(this.x, this.y, this.width, this.height);
                 ctx.fillRect(this.x, this.y, this.width, this.height);*/
                 this.shoot();
+                return this.y;
             }
 
             shoot(){
@@ -432,8 +433,7 @@
                     this.y + this.height/1.5
                 );*/
 
-                return this.x;
-
+                return [this.x, this.y];
             }
         }
 
@@ -467,16 +467,21 @@
             function gameLoop() {
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                player.draw(ctx);
 
-                let b1 = bulletController.draw(ctx);
+                let bY = player.draw(ctx);
+
+                let bX = bulletController.draw(ctx);
 
                 let e1 = new Enemy(distanceXArray[0]-=2,distanceYArray[0],"yellow",10,opTank1).draw(ctx);
 
-                console.log(b1 + "  ?  " + e1);
+                console.log(bY + "  ?  " + e1[1]);
 
-                if(b1 >= e1 && b1 <= e1+10){
-                    console.log("fuckd");
+                if(bX >= e1[0] && bX <= e1[0]+10){
+
+                }
+
+                if(bY >= e1[1] && bY <= e1[1]+10){
+                    console.log("fucked......")
                 }
 
                 /*new Enemy(distanceXArray[1]-=0.6,distanceYArray[1],"red",10,opTank2).draw(ctx);
