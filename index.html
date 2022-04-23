@@ -471,6 +471,7 @@
 
             let eOn=true;
             let eTw=true;
+            let eTh=true;
 
             function gameLoop() {
 
@@ -503,6 +504,17 @@
                     if(bY >= e2[1]-30 && bY <= e2[1]+30){
                         if( bX >= e2[0]-30 && bX <= e2[0]+30){
                             eTw = false;
+                        }
+                    }
+                }
+
+                if(eTh===true){
+                    let eObj3 = new Enemy(distanceXArray[2]-=1,distanceYArray[3],"yellow",20,opTank3);
+                    let e3 = eObj3.draw(ctx);
+
+                    if(bY >= e3[1]-30 && bY <= e3[1]+30){
+                        if( bX >= e3[0]-30 && bX <= e3[0]+30){
+                            eTh = false;
                         }
                     }
                 }
