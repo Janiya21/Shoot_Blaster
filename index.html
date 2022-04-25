@@ -494,8 +494,9 @@
 
                     if(bY+30 >= e1[1] && bY-10 <= e1[1]) {
                         if (bX >= e1[0] - 20 && bX <= e1[0] + 20) {
-                            console.log("fucked....");
                             eOn = false;
+                            score+=100;
+                            $("#playerScore").text(" "+ score +"");
                         }
                     }
                 }
@@ -507,6 +508,8 @@
                     if(bY+30 >= e2[1] && bY-10 <= e2[1]){
                         if( bX >= e2[0]-20 && bX <= e2[0]+20){
                             eTw = false;
+                            score+=100;
+                            $("#playerScore").text(" "+ score +"");
                         }
                     }
                 }
@@ -518,6 +521,8 @@
                     if(bY+30 >= e3[1] && bY-10 <= e3[1]){
                         if( bX >= e3[0]-20 && bX <= e3[0]+20){
                             eTh = false;
+                            score+=100;
+                            $("#playerScore").text(" "+ score +"");
                         }
                     }
                 }
@@ -529,6 +534,8 @@
                     if(bY+30 >= e4[1] && bY-10 <= e4[1]){
                         if( bX >= e4[0]-20 && bX <= e4[0]+20){
                             eFo = false;
+                            score+=100;
+                            $("#playerScore").text(" "+ score +"");
                         }
                     }
                 }
