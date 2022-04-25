@@ -53,10 +53,13 @@
     <section class="main-content">
         <img id="backgr1" src="assets/img/backgr1.jpg">
         <div class="menu-buttons">
-            <button id="btnPauseAction" style="display: none" class="btn-success top-50">Pause Game</button>
+            <button id="btnPauseAction" style="display: none;width: 100px !important;" class="btn-success top-50">Pause Game</button>
         </div>
         <div class="menu-buttons">
-            <button id="btnResumeAction" style="display: none; position: absolute" class="btn-warning mt-2">Resume Game</button>
+            <button id="btnResumeAction" style="display: none; position: absolute; width: 100px !important;" class="btn-warning mt-2">Resume Game</button>
+        </div>
+        <div class="score" style="display: none">
+            <b>Score</b> : <h1 id="playerScore"> 0000</h1>
         </div>
 
         <img id="myTank" src="assets/img/tank2.png" alt="tank" style="display: none;">
@@ -195,6 +198,7 @@
                 $(".main-content").css("filter","none");
                 $("#btnPauseAction").css("display","inherit");
                 $("#btnResumeAction").css("display","inherit");
+                $(".score").css("display","inherit");
             }
         });
 
@@ -474,6 +478,8 @@
             let eTh=true;
             let eFo=true;
 
+            let score=0;
+
             function gameLoop() {
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -486,7 +492,7 @@
                     let eObj1 = new Enemy(distanceXArray[0]-=0.5,distanceYArray[0],"yellow",10,opTank1);
                     let e1 = eObj1.draw(ctx);
 
-                    if(bY >= e1[1]-30 && bY <= e1[1]+10) {
+                    if(bY+30 >= e1[1] && bY-10 <= e1[1]) {
                         if (bX >= e1[0] - 20 && bX <= e1[0] + 20) {
                             console.log("fucked....");
                             eOn = false;
@@ -498,7 +504,7 @@
                     let eObj2 = new Enemy(distanceXArray[1]-=0.5,distanceYArray[2],"yellow",20,opTank2);
                     let e2 = eObj2.draw(ctx);
 
-                    if(bY >= e2[1]-30 && bY <= e2[1]+10){
+                    if(bY+30 >= e2[1] && bY-10 <= e2[1]){
                         if( bX >= e2[0]-20 && bX <= e2[0]+20){
                             eTw = false;
                         }
@@ -509,7 +515,7 @@
                     let eObj3 = new Enemy(distanceXArray[2]-=0.5,distanceYArray[3],"yellow",20,opTank3);
                     let e3 = eObj3.draw(ctx);
 
-                    if(bY >= e3[1]-30 && bY <= e3[1]+10){
+                    if(bY+30 >= e3[1] && bY-10 <= e3[1]){
                         if( bX >= e3[0]-20 && bX <= e3[0]+20){
                             eTh = false;
                         }
@@ -520,7 +526,7 @@
                     let eObj4 = new Enemy(distanceXArray[3]-=0.5,distanceYArray[4],"yellow",20,opTank4);
                     let e4 = eObj4.draw(ctx);
 
-                    if(bY >= e4[1]-30 && bY <= e4[1]+10){
+                    if(bY+30 >= e4[1] && bY-10 <= e4[1]){
                         if( bX >= e4[0]-20 && bX <= e4[0]+20){
                             eFo = false;
                         }

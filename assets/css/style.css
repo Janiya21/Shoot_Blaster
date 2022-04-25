@@ -73,6 +73,17 @@
 
 /*-------------------------------------*/
 
+html{
+    overflow: hidden;
+}
+
+.score{
+    position: absolute;
+    /*right: 0;*/
+    left: 170px;
+    top: 30px;
+}
+
 .main-content{
     overflow: hidden;
     width: 100vw;
